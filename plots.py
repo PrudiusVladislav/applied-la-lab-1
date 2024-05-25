@@ -24,3 +24,14 @@ def plot_objects(obj1, obj2, main_title, title1="", title2=""):
 
     plt.suptitle(main_title)
     plt.show()
+
+
+def plot_object_3d(obj1, title):
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+
+    ax.plot(obj1[:, 0], obj1[:, 1], obj1[:, 2], marker='o')
+    ax.set_title(title)
+    plt.show()
+
+
