@@ -1,8 +1,5 @@
 import numpy as np
-from object_transformers import (
-    transform_3d_object,
-    transform_2d_objects,
-    transform_image)
+import object_transformers as ot
 
 
 # define two objects
@@ -17,15 +14,17 @@ cube = np.array([
 ])
 
 # transform 3d object
-transform_3d_object(cube)
+ot.transform_3d_object(cube)
 
 # transform 2d objects
-transform_2d_objects(triangle, irregular_polygon,
-                     "Triangle",
-                     "Irregular Polygon")
+ot.transform_2d_objects(triangle, irregular_polygon,
+                        "Triangle",
+                        "Irregular Polygon")
 
 # transform image
-transform_image("landscape.jpg")
+ot.transform_image("landscape.jpg")
 
-
+# ot.transform_2d_objects_cv(triangle, irregular_polygon,
+#                            "Triangle",
+#                            "Irregular Polygon")
 
