@@ -29,27 +29,25 @@ def transform_2d_objects_cv(obj1, obj2, name1, name2):
     plot_objects(obj1, obj2, "Two initial 2d objects", name1, name2)
 
     tf_cv.rotate_object(obj1, 45)
-    tf_cv.scale_object(obj2, 2)  # TODO: fix: scale, reflect, shear
-    tf_cv.reflect_object(obj1, 'x')
-    tf_cv.shear_object(obj2, 0.5, 'y')
+    tf_cv.scale_object(obj2, 2)
+    tf_cv.reflect_object(obj1, 'y')
 
 
 def transform_image(file_path):
     image = cv.imread(file_path)
 
-    # Rotate
+    # rotate
     center = (image.shape[1] // 2, image.shape[0] // 2)
-    angle = 45  # Rotate the image by 45 degrees
-    scale = 1.0  # Keep the original scale
-    rotation_matrix = cv.getRotationMatrix2D(center, angle, scale)
+    angle = 45  # rotate the image by 45 degrees
+    rotation_matrix = cv.getRotationMatrix2D(center, angle, 1.0)
     rotated_image = cv.warpAffine(image, rotation_matrix, (image.shape[1], image.shape[0]))
 
-    # Scale
+    # scale
     scale_factor = 2.0
     scaling_matrix = np.array([[scale_factor, 0, 0], [0, scale_factor, 0]])
     scaled_image = cv.warpAffine(image, scaling_matrix, (image.shape[1], image.shape[0]))
 
-    # Shear
+    # shear
     shear_matrix = np.array([[1, 0.5, 0], [0, 1, 0]])  # along the x-axis by a factor of 0.5
     sheared_image = cv.warpAffine(image, shear_matrix, (image.shape[1], image.shape[0]))
 
